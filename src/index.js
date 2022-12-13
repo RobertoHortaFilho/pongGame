@@ -1,4 +1,5 @@
-import Player, { keys } from './player/player.js';
+import Player, { keys } from './objs/player.obj.js';
+import Ball from './objs/ball.obj.js';
 import ctx from './context2d.js';
 import setShortcuts from './setShortcuts.js';
 
@@ -10,11 +11,14 @@ const PLAYER1 = new Player({ x: 10, y:10 }, 'green');
 const PLAYER2 = new Player({ x: 820, y:10 }, 'blue');
 setShortcuts(PLAYER1, keys.player1);
 setShortcuts(PLAYER2, keys.player2);
+const BALL = new Ball();
+BALL.start();
 
 
 const build = () => {
   PLAYER1.move()
   PLAYER2.move()
+  BALL.move();
   requestAnimationFrame(build);
 }
 requestAnimationFrame(build);
@@ -22,6 +26,7 @@ requestAnimationFrame(build);
 
 setInterval(() => {
   ctx.clearRect(0,0,850,500)
-  PLAYER1.render()
-  PLAYER2.render()
+  PLAYER1.render();
+  PLAYER2.render();
+  BALL.render();
 }, 1000/FPS);
