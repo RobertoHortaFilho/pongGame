@@ -5,9 +5,25 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body style="background-color: #00000030;">
-	<canvas id="main" style="border: 2px solid black;"></canvas>
+  <div id="title">
+    <h1 class="score p1">0</h1>
+    <h3 class="timer title"> Pong Game </h3>
+    <h1 class="score p2">0</h1>
+  </div>
+  <div id='screen'>
+    <canvas id="main" style="border: 2px solid black;"></canvas>
+    <div id="options">
+      <label for="powerup" class="optionsItems">
+        Power-up
+        <input type="checkbox" name="powerup" id="powerup">
+      </label>
+      <button class="reset start btn optionsItems">start</button>
+      <button class="resetbtn reset btn optionsItems" disabled>reset</button>
+    </div>
+  </div>
 	<script type="module" src="./src/index.js"></script>
 </body>
 </html>

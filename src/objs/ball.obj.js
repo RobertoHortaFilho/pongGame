@@ -4,11 +4,14 @@ import ctx from "../context2d.js";
 
 const WIDTH = 850
 const HEIGHT = 500
+const allDirections = [ 30, 45, 60, 120, 135, 150, 220, 235, 250, 300, 345 ]
+
+const getOneDirection = () => allDirections[Math.floor(Math.random()* allDirections.length)]
 
 export default class Ball {
   pos = { x: 425, y: 250 };
   size = { w: 20, h: 20 };
-  deg = 45;
+  deg = getOneDirection();
   speed= 0;
   hspeed = 0;
   vspeed = 0;
@@ -25,7 +28,7 @@ export default class Ball {
   }
 
   start () {
-    this.speed = 5;
+    this.speed = 7;
     this.setVHspeed();
   }
 
@@ -50,16 +53,18 @@ export default class Ball {
     const p2Pos = 820;
     const direcao = Math.sign(this.hspeed)
     if(direcao == 1 && this.pos.x + this.hspeed + this.size.w >= p2Pos && this.pos.x + this.speed < p2Pos ) {
-      if ( this.pos.y > this.p2.pos.y && this.pos.y < this.p2.pos.y + this.p2.size.h)
-      this.hspeed *= -1
-      this.hspeed -= this.speedScale
-      this.vspeed = (Math.sign(this.vspeed) * this.speedScale) + this.vspeed
+      if ( this.pos.y > this.p2.pos.y && this.pos.y < this.p2.pos.y + this.p2.size.h){
+        this.hspeed *= -1
+        this.hspeed -= this.speedScale
+        this.vspeed = (Math.sign(this.vspeed) * this.speedScale) + this.vspeed
+      }
     }
     if(direcao == -1 && this.pos.x - this.hspeed <= p1Pos && this.pos.x + this.speed +this.size.w >p1Pos ) {
-      if ( this.pos.y > this.p1.pos.y && this.pos.y < this.p1.pos.y + this.p2.size.h)
-      this.hspeed *= -1
-      this.hspeed += this.speedScale
-      this.vspeed = (Math.sign(this.vspeed) * this.speedScale) + this.vspeed
+      if ( this.pos.y > this.p1.pos.y && this.pos.y < this.p1.pos.y + this.p2.size.h) {
+        this.hspeed *= -1
+        this.hspeed += this.speedScale
+        this.vspeed = (Math.sign(this.vspeed) * this.speedScale) + this.vspeed
+      }
     }
     if (this.pos.x > 850 || this.pos.x < -10) {
       this.ball.set(direcao);

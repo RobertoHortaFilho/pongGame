@@ -1,0 +1,37 @@
+#title {
+  /* border: 1px solid red; */
+  width: 850px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4em;
+}
+
+#screen {
+  display: flex;
+}
+
+#options {
+  padding: 1em;
+  margin-left: 1em;
+  border: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.optionsItems {
+  margin: .2em;
+}
+
+.score {
+  /* border: 1px solid blue; */
+  margin: 0px 30px;
+}
+
+.reset {
+  border-radius: 3px;
+  font-size:  1.4em;
+  width: 3.5em;
+  height: 1.6em;
+}
